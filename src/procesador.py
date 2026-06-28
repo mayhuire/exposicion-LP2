@@ -32,3 +32,17 @@ def limpiar_y_transformar(self):
 
     self.df = df
     return df
+
+#ESTADÍSTICAS Y EXPORTACIÓN 
+
+def calcular_estadisticas(self):
+
+    return self.df.groupby(["pais", "indicador"])["valor"].agg([
+        "mean", "max", "min"
+    ]).reset_index()
+
+
+def exportar_limpio(self, ruta="data/procesado/datos_limpios.csv"):
+
+    self.df.to_csv(ruta, index=False)
+    return ruta
