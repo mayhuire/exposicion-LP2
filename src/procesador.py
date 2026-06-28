@@ -16,3 +16,19 @@ class ProcesadorEconomico:
         self.df = pd.concat(lista_df, ignore_index=True)
         return self.df
     
+# LIMPIEZA Y REGEX
+
+def limpiar_y_transformar(self):
+
+    df = self.df.copy()
+
+    df["anio"] = df["fecha_original"].astype(str).str.extract(r"(\d{4})")
+    df["anio"] = df["anio"].astype(int)
+
+    df["valor"] = pd.to_numeric(df["valor"], errors="coerce")
+    df = df.dropna(subset=["valor"])
+
+    df = df.sort_values(by=["pais", "indicador", "anio"])
+
+    self.df = df
+    return df
