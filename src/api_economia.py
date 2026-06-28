@@ -9,10 +9,22 @@ class APIEconomia:
     def __init__(self):
         self.base_url = "https://api.worldbank.org/v2"
 
+    def validar_codigo(self, codigo):
+        """
+        Valida que el código del indicador tenga el formato correcto.
+        """
+
+        patron = r'^[A-Z]{2}(\.[A-Z]+)+$'
+
+        if not re.match(patron, codigo):
+            raise ValueError(f"Código de indicador inválido: {codigo}")
+        
     def obtener_datos(self, pais, indicador, anio_inicio=2000, anio_fin=2023):
         """
         Obtiene los datos desde la API del Banco Mundial.
         """
+
+        self.validar_codigo(indicador)
 
         url = (
             f"{self.base_url}/country/{pais}/indicator/{indicador}"
