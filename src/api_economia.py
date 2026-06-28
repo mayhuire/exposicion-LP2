@@ -50,3 +50,18 @@ class APIEconomia:
 
         except requests.exceptions.RequestException as e:
             raise Exception(f"Error al conectar con la API: {e}")
+        
+    def guardar_json(self, datos, nombre_archivo):
+        """
+        Guarda los datos obtenidos en un archivo JSON.
+        """
+
+        carpeta = "data/crudo"
+        os.makedirs(carpeta, exist_ok=True)
+
+        ruta = os.path.join(carpeta, nombre_archivo)
+
+        with open(ruta, "w", encoding="utf-8") as archivo:
+            json.dump(datos, archivo, ensure_ascii=False, indent=4)
+
+        print(f"Archivo guardado en: {ruta}")
