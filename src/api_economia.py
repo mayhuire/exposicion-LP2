@@ -5,6 +5,10 @@ import re
 
 
 class APIEconomia:
+    """
+    Clase encargada de consultar la API del Banco Mundial,
+    validar indicadores económicos y guardar los datos obtenidos.
+    """
 
     def __init__(self):
         self.base_url = "https://api.worldbank.org/v2"
@@ -24,18 +28,22 @@ class APIEconomia:
         Obtiene los datos desde la API del Banco Mundial.
         """
 
+        # Valida el formato del indicador económico
         self.validar_codigo(indicador)
 
+        # Construye la URL para consultar la API del Banco Mundial
         url = (
             f"{self.base_url}/country/{pais}/indicator/{indicador}"
             f"?format=json&date={anio_inicio}:{anio_fin}&per_page=100"
         )
 
         try:
+            # Realiza la solicitud HTTP a la API
             respuesta = requests.get(url, timeout=10)
             respuesta.raise_for_status()
             datos_json = respuesta.json()
 
+            # Almacena los datos obtenidos de la API
             lista_datos = []
 
             for dato in datos_json[1]:
@@ -49,19 +57,23 @@ class APIEconomia:
             return lista_datos
 
         except requests.exceptions.RequestException as e:
-            raise Exception(f"Error al conectar con la API: {e}")
+            raise ConnectionError(f"Error al conectar con la API: {e}")
         
     def guardar_json(self, datos, nombre_archivo):
         """
         Guarda los datos obtenidos en un archivo JSON.
         """
 
+        # Crea la carpeta de destino si no existe
         carpeta = "data/crudo"
         os.makedirs(carpeta, exist_ok=True)
 
         ruta = os.path.join(carpeta, nombre_archivo)
 
+        # Guarda los datos en formato JSON
         with open(ruta, "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, ensure_ascii=False, indent=4)
 
         print(f"Archivo guardado en: {ruta}")
+
+        return ruta
