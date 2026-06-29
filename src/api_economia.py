@@ -33,9 +33,10 @@ class APIEconomia:
 
         # Construye la URL para consultar la API del Banco Mundial
         url = (
-            f"{self.base_url}/country/{pais}/indicator/{indicador}"
+            f"{self.base_url}/es/country/{pais}/indicator/{indicador}"
             f"?format=json&date={anio_inicio}:{anio_fin}&per_page=100"
         )
+
 
         try:
             # Realiza la solicitud HTTP a la API
