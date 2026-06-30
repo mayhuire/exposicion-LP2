@@ -25,22 +25,28 @@ class VisualizadorEconomico:
         Carga los datos del archivo CSV limpio en un DataFrame de pandas
         y realiza validaciones de integridad de los datos.
         """
+        
+        # Verificar que el archivo existe
         if not os.path.exists(self.ruta_csv):
             raise FileNotFoundError(f"Error: El archivo de datos no existe en la ruta: '{self.ruta_csv}'")
 
+        # Leer el CSV controlando posibles errores de formato
         try:
             self.df = pd.read_csv(self.ruta_csv)
         except Exception as e:
             raise ValueError(f"Error al leer el archivo CSV: {e}")
 
+        # Validar que el DataFrame no esté vacío
         if self.df.empty:
             raise ValueError("Error: El archivo CSV está vacío o no contiene filas de datos.")
 
+        # Comprobar que existan las columnas mínimas necesarias para los gráficos
         columnas_requeridas = ["pais", "indicador", "anio", "valor"]
         columnas_faltantes = [col for col in columnas_requeridas if col not in self.df.columns]
         if columnas_faltantes:
             raise ValueError(f"Error: Columnas requeridas no encontradas: {columnas_faltantes}")
 
+        # Convertir tipos de datos para asegurar operaciones correctas
         self.df["anio"] = pd.to_numeric(self.df["anio"], errors="coerce").astype("Int64")
         self.df["valor"] = pd.to_numeric(self.df["valor"], errors="coerce")
 
@@ -54,6 +60,7 @@ class VisualizadorEconomico:
         if self.df is None or self.df.empty:
             raise ValueError("Error: No se han cargado datos. Ejecute primero 'cargar_datos()'.")
 
+        # Filtrar por país (insensible a mayúsculas/minúsculas) y por indicador (búsqueda parcial)
         df_filtrado = self.df[
             (self.df["pais"].str.lower() == pais.lower()) &
             (self.df["indicador"].str.contains(indicador, case=False, na=False))
@@ -62,6 +69,7 @@ class VisualizadorEconomico:
         if df_filtrado.empty:
             raise ValueError(f"Error: No se encontraron datos para el país '{pais}' con el indicador '{indicador}'.")
 
+        # Aplicar filtro de rango de años si se especifica
         if anio_inicio is not None:
             df_filtrado = df_filtrado[df_filtrado["anio"] >= anio_inicio]
         if anio_fin is not None:
@@ -70,13 +78,16 @@ class VisualizadorEconomico:
         if df_filtrado.empty:
             raise ValueError(f"Error: El rango de años [{anio_inicio} - {anio_fin}] no contiene datos.")
 
+        # Ordenar cronológicamente y extraer el nombre real del indicador y país
         df_filtrado = df_filtrado.sort_values("anio")
         nombre_indicador_real = df_filtrado["indicador"].iloc[0]
         nombre_pais_real = df_filtrado["pais"].iloc[0]
 
+        # Configurar estilo y tamaño del gráfico
         plt.figure(figsize=(10, 6))
         sns.set_theme(style="whitegrid")
 
+        # Dibujar la línea con marcadores
         plt.plot(
             df_filtrado["anio"],
             df_filtrado["valor"],
@@ -92,6 +103,7 @@ class VisualizadorEconomico:
         plt.xlabel("Año", fontsize=11)
         plt.ylabel("Valor", fontsize=11)
 
+        # Usar los años disponibles como marcas en el eje X
         anios_validos = df_filtrado["anio"].dropna().unique()
         plt.xticks(anios_validos, rotation=45)
 
