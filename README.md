@@ -13,7 +13,7 @@
 <h3> <b>Integrantes del equipo:</b> </h3>
 
 <ul>
-  <li>Mayhuire Calle, Jeremi Angel () </li>
+  <li>Mayhuire Calle, Jeremi Angel (20240717) </li>
   <li>Meza Mitma, Liz Maritza (MezaLiz96) (20220771)</li>
   <li>Tafur Urbina, Jarry Fabian () ()</li>
   <li>Veliz Camayo, Victor Hugo () ()</li>
