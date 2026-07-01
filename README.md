@@ -16,5 +16,5 @@
   <li>Mayhuire Calle, Jeremi Angel (Mayhuire) (20240717) </li>
   <li>Meza Mitma, Liz Maritza (MezaLiz96) (20220771)</li>
   <li>Tafur Urbina, Jarry Fabian () ()</li>
-  <li>Veliz Camayo, Victor Hugo () ()</li>
+  <li>Veliz Camayo, Victor Hugo (VictorVeliz29) (20211907)</li>
 </ul>
