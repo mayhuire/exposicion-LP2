@@ -1,0 +1,17 @@
+[
+  {"pais": "Perú", "indicador": "PIB per cápita (US$ a precios actuales)", "fecha_original": "2023", "valor": 7789.7},
+  {"pais": "Perú", "indicador": "Inflación, precios al consumidor (% anual)", "fecha_original": "2023", "valor": 3.1},
+  {"pais": "Perú", "indicador": "Desempleo, total (% de la población activa total)", "fecha_original": "2023", "valor": 4.8},
+  {"pais": "Chile", "indicador": "PIB per cápita (US$ a precios actuales)", "fecha_original": "2023", "valor": 17253.4},
+  {"pais": "Chile", "indicador": "Inflación, precios al consumidor (% anual)", "fecha_original": "2023", "valor": 3.9},
+  {"pais": "Chile", "indicador": "Desempleo, total (% de la población activa total)", "fecha_original": "2023", "valor": 8.3},
+  {"pais": "Colombia", "indicador": "PIB per cápita (US$ a precios actuales)", "fecha_original": "2023", "valor": 6942.1},
+  {"pais": "Colombia", "indicador": "Inflación, precios al consumidor (% anual)", "fecha_original": "2023", "valor": 9.5},
+  {"pais": "Colombia", "indicador": "Desempleo, total (% de la población activa total)", "fecha_original": "2023", "valor": 10.2},
+  {"pais": "México", "indicador": "PIB per cápita (US$ a precios actuales)", "fecha_original": "2023", "valor": 11641.9},
+  {"pais": "México", "indicador": "Inflación, precios al consumidor (% anual)", "fecha_original": "2023", "valor": 4.7},
+  {"pais": "México", "indicador": "Desempleo, total (% de la población activa total)", "fecha_original": "2023", "valor": 2.8},
+  {"pais": "Brasil", "indicador": "PIB per cápita (US$ a precios actuales)", "fecha_original": "2023", "valor": 8827.9},
+  {"pais": "Brasil", "indicador": "Inflación, precios al consumidor (% anual)", "fecha_original": "2023", "valor": 4.6},
+  {"pais": "Brasil", "indicador": "Desempleo, total (% de la población activa total)", "fecha_original": "2023", "valor": 7.8}
+]
