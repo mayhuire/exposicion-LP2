@@ -7,7 +7,7 @@
        height="170">
 </p>
 <h3 align="center">
-  <b>ANÁLISIS DE ENCUADRES DISCURSIVOS EN NOTICIAS POLÍTICAS Y SU ECO EN COMENTARIOS DE YOUTUBE MEDIANTE WEB SCRAPING</b>
+  <b> Análisis Económico de Latinoamérica (2000-2023) </b>
 </h3>
 
 <h3> <b>Integrantes del equipo:</b> </h3>
